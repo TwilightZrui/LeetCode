@@ -1,15 +1,23 @@
-#include <iostream>
+/***
+ * @Author       : TwilightZrui
+ * @Date         : 2022-08-26 22:49:36
+ * @LastEditTime : 2022-11-20 20:48:52
+ * @FilePath     : /LeetCode/maxtrix_back2.cpp
+ * @Description  :
+ * @Copyright (c) 2022, All Rights Reserved.
+ */
 #include <cmath>
 #include <cstring>
+#include <ctype.h>
+#include <iostream>
+#include <stack>
 #include <string>
 #include <vector>
-#include <stack> 
-#include <ctype.h>
 #define random() rand()/double(RAND_MAX)
 
 using namespace std;
-const int COL = 11;
-const int ROW = 7;
+const int COL = 20;
+const int ROW = 10;
 bool maximalArea(int& maximalArea,int rectangleArea)
 {
     bool changeFlag = false;
@@ -25,7 +33,7 @@ bool maximalArea(int& maximalArea,int rectangleArea)
 int randomNumInt_0_or_1()
 {
     double num;
-   
+
     num = random();
     // printf("%0.3f ",num);
     if(num < 0.2) num = 0;
@@ -82,7 +90,7 @@ bool histogramMaxRect(int heights_[], int ArLength ,int nowHANG,
             {
                 RectResult.rectStartROWTemp = sta.top() + 1 ;
                 RectResult.rectEndROWTemp = i - 1 ;
-                RectResult.bottlomCOLTemp = nowHANG;   
+                RectResult.bottlomCOLTemp = nowHANG;
 
                 RectResult.RowLength = height;
                 RectResult.ColLength = width;
@@ -149,46 +157,37 @@ int main()
 {
     srand(time(NULL));//设置随机数种子，使每次产生的随机序列不同
 
- 
-    int histogramArray[ROW]= {0};
+    int histogramArray[ROW] = {0};
     int array[COL][ROW] = {0};
 
-
     cout << endl;
-    for(int hang = 0;hang < COL ;hang++)
-    {
-        for(int lie = 0;lie < ROW ;lie++)
-        {
+    for (int hang = 0; hang < COL; hang++) {
+        for (int lie = 0; lie < ROW; lie++) {
             array[hang][lie] = randomNumInt_0_or_1();
-            printf("%d  ",array[hang][lie]);
+            printf("%d  ", array[hang][lie]);
         }
         cout << endl;
     }
     cout << endl;
 
-
     // ala
-    for(int hang = 0;hang < COL ;hang++)
-    {
-        for(int lie = 0;lie < ROW ;lie++)
-        {
-            if(array[hang][lie] == 0)
+    for (int hang = 0; hang < COL; hang++) {
+        for (int lie = 0; lie < ROW; lie++) {
+            if (array[hang][lie] == 0)
                 histogramArray[lie] = 0;
             else
-                histogramArray[lie] ++;
+                histogramArray[lie]++;
             printf("%-3d", histogramArray[lie]);
         }
 
-        histogramMaxRect(histogramArray, ROW, hang, 
-                            rectResult);
+        histogramMaxRect(histogramArray, ROW, hang,
+                         rectResult);
         cout << endl;
     }
     // //result print
     cout << endl << "rectStartROWTemp : " << rectResult.rectStartROWTemp << endl;
     cout << "rectEndROWTemp: " << rectResult.rectEndROWTemp << endl;
-    cout << "max rectangel bottom hang: " <<rectResult.bottlomCOLTemp <<endl;  
-   
- 
+    cout << "max rectangel bottom hang: " << rectResult.bottlomCOLTemp << endl;
 
     return 0;
 }

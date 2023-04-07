@@ -1,3 +1,11 @@
+/***
+ * @Author       : TwilightZrui
+ * @Date         : 2022-08-26 22:49:36
+ * @LastEditTime : 2022-11-20 20:47:15
+ * @FilePath     : /LeetCode/randomNUM.cpp
+ * @Description  :
+ * @Copyright (c) 2022, All Rights Reserved.
+ */
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -38,7 +46,7 @@ int main()
     //         printf("%d\t",array[hang][lie]);
     //     }
     //     cout << endl;
-    // }   
+    // }
 
     for(int hang = 0;hang < COL ;hang++)
     {
@@ -48,7 +56,7 @@ int main()
             printf("%0.3f\t",array[hang][lie]);
         }
         cout << endl;
-    }   
+    }
 
     // for (int i = 0; i < 10; i++)
     // {
