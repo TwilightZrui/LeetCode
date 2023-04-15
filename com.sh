@@ -1,0 +1,1 @@
+g++ xxx.cpp -o xxx.exe

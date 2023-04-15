@@ -6,8 +6,10 @@
 #include <cmath>
 #include <string>
 using namespace std;
-#define int long long 
+// #define int long long 
+#define N 5
 int n;
+
 vector<int> g[N+5];
 int val[N+5][2];
 int tag[N+5][2];
