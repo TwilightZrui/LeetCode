@@ -64,13 +64,43 @@
  */
 class Solution {
   public:
+    // 递归
+    // bool isSymmetric(TreeNode *root) {
+    //     return check(root, root);
+    // }
+    // bool check(TreeNode *l, TreeNode *r) {
+    //     if (l == nullptr)
+    //         return r == nullptr;
+    //     return r != nullptr && l->val == r->val && check(l->left, r->right) && check(l->right, r->left);
+    // }
+    //  迭代
+
     bool isSymmetric(TreeNode *root) {
-        return check(root, root);
-    }
-    bool check(TreeNode *l, TreeNode *r) {
-        if (l == nullptr)
-            return r == nullptr;
-        return r != nullptr && l->val == r->val && check(l->left, r->right) && check(l->right, r->left);
+        if (root == nullptr)
+            return true;
+        if ((root->left == nullptr || root->right == nullptr) && (root->left != nullptr && root->right != nullptr))
+            return false;
+        queue<TreeNode *> q;
+        q.push(root->left);
+        q.push(root->right);
+        while (!q.empty()) {
+            auto l1 = q.front();
+            q.pop();
+            auto l2 = q.front();
+            q.pop();
+            if (l1 == nullptr && l2 == nullptr)
+                continue;
+            if (l1 == nullptr || l2 == nullptr)
+                return false;
+            if (l1->val != l2->val)
+                return false;
+            q.push(l1->left);
+            q.push(l2->right);
+            q.push(l1->right);
+            q.push(l2->left);
+        }
+        return true;
+        // return check(root, root);
     }
 };
 // @lc code=end
