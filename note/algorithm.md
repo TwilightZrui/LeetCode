@@ -1,8 +1,8 @@
 <!--
  * @Author: TwilightZrui 1193882630@qq.com
  * @Date: 2023-04-26 13:20:30
- * @LastEditors: TwilightZrui 1193882630@qq.com
- * @LastEditTime: 2023-04-26 13:26:26
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2023-05-12 17:40:18
  * @FilePath: /LeetCode/note/algorithm.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -56,3 +56,18 @@ classSolution {
 ## 递归
 
 递去归来
+
+## 排序
+
+### 归并排序
+
+归并排序是一种分治思想的排序算法，将一个数组分成两个部分，递归地对两个部分进行排序，然后合并两个已排好序的部分。归并排序的步骤如下：
+
+1. 将待排数组从中间分成两个部分；
+2. 对左半部分和右半部分分别递归调用归并排序；
+3. 将已排好序的左半部分和右半部分进行合并，形成一个新的有序数组。
+
+具体的合并过程可以采用指针或额外的数组来实现，其中额外的数组可以减少归并排序过程中的访存次数，提高效率。
+
+归并排序的时间复杂度为O(nlogn)，空间复杂度为O(n)。
+它的稳定性得益于归并时相等元素的相对位置不变。相比于快速排序，归并排序更适用于数据量较大的情况，而且它不需要额外的内存空间来存储中间结果。
