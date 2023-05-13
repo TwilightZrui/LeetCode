@@ -1,4 +1,8 @@
 /*
+ * @Author: TwilightZrui
+ * @Date: 2023-05-13 00:34:19
+ */
+/*
  * @lc app=leetcode.cn id=104 lang=cpp
  *
  * [104] 二叉树的最大深度
@@ -14,22 +18,22 @@
  * Testcase Example:  '[3,9,20,null,null,15,7]'
  *
  * 给定一个二叉树，找出其最大深度。
- * 
+ *
  * 二叉树的深度为根节点到最远叶子节点的最长路径上的节点数。
- * 
+ *
  * 说明: 叶子节点是指没有子节点的节点。
- * 
+ *
  * 示例：
  * 给定二叉树 [3,9,20,null,null,15,7]，
- * 
+ *
  * ⁠   3
  * ⁠  / \
  * ⁠ 9  20
  * ⁠   /  \
  * ⁠  15   7
- * 
+ *
  * 返回它的最大深度 3 。
- * 
+ *
  */
 
 // @lc code=start
@@ -45,10 +49,32 @@
  * };
  */
 class Solution {
-public:
-    int maxDepth(TreeNode* root) {
+  public:
+    // int maxDepth(TreeNode *root) {
 
+    //     return root == nullptr ? 0 : max(maxDepth(root->left), maxDepth(root->right)) + 1;
+    // }
+
+    int maxDepth(TreeNode *root) {
+        if (root == nullptr)
+            return 0;
+        queue<TreeNode *> q;
+        int depth = 0;
+        q.push(root);
+        while (!q.empty()) {
+            int length = q.size();
+            while (length > 0) {
+                root = q.front();
+                q.pop();
+                if (root->left != nullptr)
+                    q.push(root->left);
+                if (root->right != nullptr)
+                    q.push(root->right);
+                length -= 1;
+            }
+            depth++;
+        }
+        return depth;
     }
 };
 // @lc code=end
-
