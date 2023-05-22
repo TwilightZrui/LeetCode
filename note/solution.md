@@ -86,16 +86,6 @@ dp[0] = 0;
 * 将 cur 指针指向 next，继续遍历。
   遍历完毕后，prev 指向新的头节点，即反转前原来的尾节点。
 
-## 94.二叉树的中序遍历
-
-递归：
-中序遍历：
-递归公式 Preorder(node) = Preorder(node->left)->print node->preorder(node->right)
-中止条件：node是否为空，为空则返
-
-迭代
-用stack把递归的过程模拟出来
-
 ## 100.相同的树
 
 深度优先搜索:
@@ -205,4 +195,49 @@ BFS:
 位运算
 ![1684598000113](image/solution/1684598000113.png)
 
+哈希表??
+
+## 141.环形链表
+
 哈希表
+用unordered_map数据结构，该结构只允许插入元素一次，无序
+插入元素：insert(num);
+查找改元素是否存在：count(num);
+
+双指针
+特殊判断条件：
+head==nullptr,head->next==nullptr
+初始化条件：slow和fast不能相等，所以一开始初始化的时候也不能相等
+
+如果链表中存在环，快慢指针一定会相遇
+循环条件：快慢指针相遇
+结束条件：fast==nullptr || fast->next==nullptr
+
+## 94.二叉树的中序遍历
+
+递归：
+中序遍历：
+递归公式 Preorder(node) = Preorder(node->left)->print node->preorder(node->right)
+中止条件：node是否为空，为空则返
+
+迭代
+用stack把递归的过程模拟出来
+
+## 144.二叉树前序遍历
+
+前序遍历：
+递归公式：Preorder(node) = print node->Preorder(node->left)->preorder(node->right)
+中止条件：node是否为空，为空则返回
+递归过程：
+
+迭代：
+这里需要注意的是右节点应优先入栈
+这是由于栈的先进后出特点，以及前序遍历：根->左->右的顺序
+右节点先入栈，那么我们优先遍历左节点，自然就得到前序遍历的正确顺序
+
+## 145.二叉树后序遍历
+
+后序遍历：
+递归公式：Preorder(node) =  node->Preorder(node->left)->preorder(node->right)-》print
+
+## 102.二叉树层序遍历
