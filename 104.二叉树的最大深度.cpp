@@ -50,27 +50,58 @@
  */
 class Solution {
   public:
+    // dfs
     // int maxDepth(TreeNode *root) {
-
     //     return root == nullptr ? 0 : max(maxDepth(root->left), maxDepth(root->right)) + 1;
     // }
 
+    // // bfs
+    // int maxDepth(TreeNode *root) {
+    //     if (root == nullptr)
+    //         return 0;
+    //     queue<TreeNode *> q;
+    //     int depth = 0;
+    //     q.push(root);
+    //     while (!q.empty()) {
+    //         int length = q.size();
+    //         while (length > 0) {
+    //             root = q.front();
+    //             q.pop();
+    //             if (root->left != nullptr)
+    //                 q.push(root->left);
+    //             if (root->right != nullptr)
+    //                 q.push(root->right);
+    //             length -= 1;
+    //         }
+    //         depth++;
+    //     }
+    //     return depth;
+    // }
+
+    // // dfs
+    // int maxDepth(TreeNode *root) {
+    //     if (root == nullptr)
+    //         return 0;
+    //     return (max(maxDepth(root->left), maxDepth(root->right)) + 1);
+    // }
+
+    // bfs
     int maxDepth(TreeNode *root) {
         if (root == nullptr)
             return 0;
         queue<TreeNode *> q;
-        int depth = 0;
         q.push(root);
+        int depth = 0;
         while (!q.empty()) {
-            int length = q.size();
-            while (length > 0) {
-                root = q.front();
+            int sz = q.size();
+            while (sz > 0) {
+                TreeNode *cur = q.front();
                 q.pop();
-                if (root->left != nullptr)
-                    q.push(root->left);
-                if (root->right != nullptr)
-                    q.push(root->right);
-                length -= 1;
+                if (cur->left != nullptr)
+                    q.push(cur->left);
+                if (cur->right != nullptr)
+                    q.push(cur->right);
+                sz--;
             }
             depth++;
         }

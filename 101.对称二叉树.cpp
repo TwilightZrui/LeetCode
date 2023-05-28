@@ -75,32 +75,76 @@ class Solution {
     // }
     //  迭代
 
+    // bool isSymmetric(TreeNode *root) {
+    //     if (root == nullptr)
+    //         return true;
+    //     if ((root->left == nullptr || root->right == nullptr) && (root->left != nullptr && root->right != nullptr))
+    //         return false;
+    //     queue<TreeNode *> q;
+    //     q.push(root->left);
+    //     q.push(root->right);
+    //     while (!q.empty()) {
+    //         auto l1 = q.front();
+    //         q.pop();
+    //         auto l2 = q.front();
+    //         q.pop();
+    //         if (l1 == nullptr && l2 == nullptr)
+    //             continue;
+    //         if (l1 == nullptr || l2 == nullptr)
+    //             return false;
+    //         if (l1->val != l2->val)
+    //             return false;
+    //         q.push(l1->left);
+    //         q.push(l2->right);
+    //         q.push(l1->right);
+    //         q.push(l2->left);
+    //     }
+    //     return true;
+    //     // return check(root, root);
+    // }
+
+    // 递归
     bool isSymmetric(TreeNode *root) {
         if (root == nullptr)
             return true;
-        if ((root->left == nullptr || root->right == nullptr) && (root->left != nullptr && root->right != nullptr))
-            return false;
-        queue<TreeNode *> q;
-        q.push(root->left);
-        q.push(root->right);
-        while (!q.empty()) {
-            auto l1 = q.front();
-            q.pop();
-            auto l2 = q.front();
-            q.pop();
-            if (l1 == nullptr && l2 == nullptr)
-                continue;
-            if (l1 == nullptr || l2 == nullptr)
-                return false;
-            if (l1->val != l2->val)
-                return false;
-            q.push(l1->left);
-            q.push(l2->right);
-            q.push(l1->right);
-            q.push(l2->left);
-        }
-        return true;
-        // return check(root, root);
+        return check(root->left, root->right);
     }
+    bool check(TreeNode *left, TreeNode *right) {
+        if ((left == nullptr) && (right == nullptr))
+            return true;
+        if ((left != nullptr) ^ (right != nullptr))
+            return false;
+        if (left->val == right->val)
+            return (check(left->left, right->right) && check(left->right, right->left));
+        else
+            return false;
+    }
+
+    // // 迭代
+    // bool isSymmetric(TreeNode *root) {
+    //     if (root == nullptr)
+    //         return true;
+
+    //     queue<TreeNode *> q;
+    //     q.push(root);
+    //     q.push(root);
+    //     while (!q.empty()) {
+    //         auto left = q.front();
+    //         q.pop();
+    //         auto right = q.front();
+    //         q.pop();
+    //         if ((left == nullptr) && (right == nullptr))
+    //             continue; // important
+    //         if ((left == nullptr) ^ (right == nullptr))
+    //             return false;
+    //         if (left->val != right->val)
+    //             return false;
+    //         q.push(left->left);
+    //         q.push(right->right);
+    //         q.push(left->right);
+    //         q.push(right->left);
+    //     }
+    //     return q.empty();
+    // }
 };
 // @lc code=end

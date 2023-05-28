@@ -69,10 +69,58 @@
  */
 class Solution {
   public:
+    // // BFS
+    // bool isSameTree(TreeNode *p, TreeNode *q) {
+    //     if (p == nullptr && q == nullptr)
+    //         return true;
+    //     if ((p == nullptr) ^ (q == nullptr))
+    //         return false;
+
+    //     queue<TreeNode *> leftq, rightq;
+    //     leftq.push(p);
+    //     rightq.push(q);
+    //     while ((!leftq.empty()) && (!rightq.empty())) {
+    //         TreeNode *left = leftq.front();
+    //         leftq.pop();
+    //         TreeNode *right = rightq.front();
+    //         rightq.pop();
+    //         if (left->val != right->val)
+    //             return false;
+
+    //         TreeNode *left1 = left->left, *right1 = left->right;
+    //         TreeNode *left2 = right->left, *right2 = right->right;
+
+    //         if ((left1 == nullptr) ^ (left2 == nullptr))
+    //             return false;
+    //         if ((right1 == nullptr) ^ (right2 == nullptr))
+    //             return false;
+    //         if (left1 != nullptr)
+    //             leftq.push(left1);
+    //         if (right1 != nullptr)
+    //             leftq.push(right1);
+
+    //         if (left2 != nullptr)
+    //             rightq.push(left2);
+    //         if (right2 != nullptr)
+    //             rightq.push(right2);
+    //     }
+
+    //     return (leftq.empty() && rightq.empty());
+    // }
+    // DFS
     bool isSameTree(TreeNode *p, TreeNode *q) {
         if (p == nullptr)
             return (q == nullptr);
-        return q != nullptr && p->val == q->val && isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
+        if ((p == nullptr) ^ (q == nullptr))
+            return false;
+        if ((q != nullptr) && (p != nullptr)) {
+            if (p->val == q->val) {
+                return (isSameTree(p->left, q->left) && isSameTree(p->right, q->right));
+            } else
+                return false;
+        }
+        return true;
+        // return q != nullptr && p->val == q->val && isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
     }
 };
 // @lc code=end
