@@ -1,8 +1,4 @@
 /*
- * @Author: TwilightZrui
- * @Date: 2023-05-13 12:13:07
- */
-/*
  * @lc app=leetcode.cn id=108 lang=cpp
  *
  * [108] 将有序数组转换为二叉搜索树
@@ -52,7 +48,7 @@
  *
  */
 
-// @lc code=start
+// @lc code=stEart
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -64,12 +60,15 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-class Solution {
-  public:
-    TreeNode *sortedArrayToBST(vector<int> &nums) {
+class Solution
+{
+public:
+    TreeNode *sortedArrayToBST(vector<int> &nums)
+    {
         return DFS(nums, 0, nums.size() - 1);
     }
-    TreeNode *DFS(vector<int> &nums, int startIndex, int endIndex) {
+    TreeNode *DFS(vector<int> &nums, int startIndex, int endIndex)
+    {
         if (startIndex > endIndex)
             return nullptr;
         int mid = (startIndex + endIndex) / 2;
@@ -81,7 +80,8 @@ class Solution {
         return root;
     }
 
-    TreeNode *sortedArrayToBST(vector<int> &nums) {
+    TreeNode *sortedArrayToBST(vector<int> &nums)
+    {
         if (nums.size() == 0)
             return nullptr;
 
@@ -93,10 +93,12 @@ class Solution {
         TreeNode *root = new TreeNode(nums[mid]);
         stk.push(root);
 
-        while (!q.empty()) {
+        while (!q.empty())
+        {
             auto temp = stk.top();
             stk.pop();
-            while (left <= right) {
+            while (left <= right)
+            {
                 temp->left;
             }
         }
