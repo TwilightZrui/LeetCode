@@ -1,1 +1,0 @@
-g++ convexHull.cpp -o convexHullt $(pkg-config --cflags --libs opencv)
